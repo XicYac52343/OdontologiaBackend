@@ -11,43 +11,43 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Crear Cuenta</h3></div>
                                     <div class="card-body">
-                                        <form>
-                                            <div class="row mb-3">
+                                        <form action="servletRegistro" method="POST">
+                                            <div class="row mb-3">  
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Ingresa tu primer nombre" />
-                                                        <label for="inputFirstName">Primer Nombre</label>
+                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Ingresa tu primer nombre" name="nombre"/>
+                                                        <label for="inputFirstName">Nombre</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Ingresa tu apellido" />
+                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Ingresa tu apellido" name="apellido"/>
                                                         <label for="inputLastName">Apellido</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="nombre@ejemplo.com" />
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="nombre@ejemplo.com" name="correo"/>
                                                 <label for="inputEmail">Correo</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Crea una contraseña" />
+                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Crea una contraseña" name="contrasenia"/>
                                                         <label for="inputPassword">Contraseña</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirma la contraseña" />
+                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirma la contraseña" name="repContrasenia"/>
                                                         <label for="inputPasswordConfirm">Confirma la Contraseña</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">Crear Cuenta</a></div>
+                                                <div class="d-grid"><button type="submit" class="btn btn-primary btn-block">Crear Cuenta</button></div>
                                             </div>
                                         </form>
                                     </div>
