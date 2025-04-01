@@ -3,7 +3,7 @@
 
 <html lang="en">
     <%@include file="layout/header.jsp" %>
-    </head>
+    </head>  
     <body class="sb-nav-fixed">
         <%@include file="layout/navBar.jsp" %>
         <div id="layoutSidenav">

@@ -73,7 +73,7 @@
                 </a>
                 <div class="collapse" id="collapseSecretarios" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Secretarios</a>
+                        <a class="nav-link" href="servletSecretarios" >Ver Secretarios</a>
                         <a class="nav-link" href="#" >Alta Secretarios</a>
                     </nav>
                 </div>
@@ -84,8 +84,8 @@
                 </a>
                 <div class="collapse" id="collapseUsuarios" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Usuarios</a>
-                        <a class="nav-link" href="#" >Alta Usuarios</a>
+                        <a class="nav-link" href="servletUsuario" >Ver Usuarios</a>
+                        <a class="nav-link" href="altaUsuarios.jsp" >Alta Usuarios</a>
                     </nav>
                 </div>
                 

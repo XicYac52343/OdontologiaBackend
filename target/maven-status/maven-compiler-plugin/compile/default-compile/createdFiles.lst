@@ -1,10 +1,14 @@
+com\mycompany\odontologia\servletUsuario.class
 com\mycompany\odontologia\servletRegistro.class
 com\mycompany\odontologia\servletLogin.class
-persistencia\claseUsuariosOdonJpaController.class
-logica\claseUsuariosOdon.class
+com\mycompany\odontologia\servletEditarUsuario.class
 logica\claseUsuariosOdon_.class
 persistencia\controladoraPersistencia.class
 logica\controladora.class
+com\mycompany\odontologia\servletSecretarios.class
+persistencia\claseUsuariosOdonJpaController.class
+com\mycompany\odontologia\servletEliminarUsuario.class
+logica\claseUsuariosOdon.class
 persistencia\exceptions\NonexistentEntityException.class
 persistencia\exceptions\PreexistingEntityException.class
 persistencia\exceptions\IllegalOrphanException.class

@@ -14,18 +14,19 @@ public class claseUsuariosOdon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String nombre, apellido, correo, contrasenia;
+    private String nombre, apellido, correo, contrasenia, rol;
     
     public claseUsuariosOdon(){
         
     }
     
-    public claseUsuariosOdon(int id, String nombre, String apellido, String correo, String contrasenia ){
+    public claseUsuariosOdon(int id, String nombre, String apellido, String correo, String contrasenia, String rol ){
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.contrasenia = contrasenia;
+        this.rol = rol;
     }
    
         
@@ -65,6 +66,14 @@ public class claseUsuariosOdon implements Serializable {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+    
+    public String getRol(){
+        return rol;
+    }
+    
+    public void setRol(String rol){
+        this.rol = rol;
     }
     
     

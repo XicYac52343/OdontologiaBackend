@@ -11,7 +11,21 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Iniciar Sesión</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Iniciar Sesión</h3>
+                                        <%
+                                            HttpSession misession = request.getSession();
+                                            Integer fallo = (Integer) request.getSession().getAttribute("fallo");
+                                            if(fallo != null){
+                                                if(fallo==1){
+                                        %>
+                                        <div class="alert alert-danger">
+                                            <strong>Error</strong> en las credenciales
+                                        </div>
+                                        <%
+                                                }
+                                            }
+                                        %>
+                                    </div>
                                     <div class="card-body">
                                         <form action="servletLogin" method="POST">
                                             <div class="form-floating mb-3">
@@ -32,9 +46,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="register.jsp">¿No tienes cuenta?, ¡Regístrate!</a></div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

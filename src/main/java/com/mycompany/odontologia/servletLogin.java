@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import logica.controladora;
+import logica.claseUsuariosOdon;
 
 
 @WebServlet(name = "servletLogin", urlPatterns = {"/servletLogin"})
@@ -60,15 +61,26 @@ public class servletLogin extends HttpServlet {
             throws ServletException, IOException {
         String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
-        
+        HttpSession misession = request.getSession(true);
         if(control.validarCredenciales(correo, contrasenia)){
-            HttpSession misession = request.getSession(true);
             misession.setAttribute("usuario", correo);
+            misession.setAttribute("fallo", 0);
             response.sendRedirect("index.jsp");
         }else{
+            misession.setAttribute("fallo", 1);
             response.sendRedirect("login.jsp");
         }
         
+        /*claseUsuariosOdon usu1 = new claseUsuariosOdon();
+        usu1.setNombre("admin");
+        usu1.setApellido("master");
+        usu1.setCorreo("admin@gmail.com");
+        usu1.setContrasenia("123456");
+        usu1.setRol("secretaria");
+        
+        control.crearUsuario(usu1);
+        
+        response.sendRedirect("login.jsp");*/
     }
 
     /**

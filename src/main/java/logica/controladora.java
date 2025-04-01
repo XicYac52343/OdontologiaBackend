@@ -2,7 +2,10 @@ package logica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import persistencia.controladoraPersistencia;
+import persistencia.exceptions.NonexistentEntityException;
 
 
 public class controladora {
@@ -10,6 +13,14 @@ public class controladora {
     
     public void crearUsuario(claseUsuariosOdon usu){
         controlPersis.crearUsuario(usu);
+    }
+    
+    public List<claseUsuariosOdon> traerUsuario(){
+        return controlPersis.obtenerUsuarios();
+    }
+    
+    public void eliminarUsuario(int id){
+        controlPersis.eliminarUsuario(id);
     }
     
     public Boolean validarCredenciales(String correo, String contrasenia){
