@@ -44,7 +44,7 @@ public class servletEditarUsuario extends HttpServlet {
         for(int i = 0; i < listaUsuarios.size(); i++){
             if(listaUsuarios.get(i).getId() == id){
                misession.setAttribute("usuarioEditar", listaUsuarios.get(i));
-               response.sendRedirect("verUsuarios.jsp");
+               response.sendRedirect("editarUsuarios.jsp");
             }
         }
     }
@@ -58,7 +58,7 @@ public class servletEditarUsuario extends HttpServlet {
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
         
-        claseUsuariosOdon usu = new claseUsuariosOdon();
+        claseUsuariosOdon usu = (claseUsuariosOdon) request.getSession().getAttribute("usuarioEditar");
         
         usu.setNombre(nombre);
         usu.setApellido(apellido);
@@ -67,8 +67,7 @@ public class servletEditarUsuario extends HttpServlet {
         usu.setRol(rol);
         
         control.editarUsuario(usu);
-        response.sendRedirect("verUsuarios.jsp");
-
+        response.sendRedirect("servletUsuario");
     }
 
     @Override

@@ -43,7 +43,6 @@ public class servletUsuario extends HttpServlet {
         
         HttpSession misession = request.getSession();
         misession.setAttribute("listaUsuarios", listaUsuarios);
-        
         response.sendRedirect("verUsuarios.jsp");
     }
 

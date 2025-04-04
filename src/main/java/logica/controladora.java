@@ -19,6 +19,10 @@ public class controladora {
         return controlPersis.obtenerUsuarios();
     }
     
+    public void editarUsuario(claseUsuariosOdon usu){
+        controlPersis.editarUsuario(usu);
+    }
+    
     public void eliminarUsuario(int id){
         controlPersis.eliminarUsuario(id);
     }
