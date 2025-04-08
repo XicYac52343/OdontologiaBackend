@@ -18,7 +18,7 @@
                 <div class="collapse" id="collapsePacientes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="layout-static.html">Ver Pacientes</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">Alta Pacientes</a>
+                        <a class="nav-link" href="altaPacientes.jsp">Alta Pacientes</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseResponsables" aria-expanded="false" aria-controls="collapsePages">
@@ -34,16 +34,17 @@
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTurnos" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-brands fa-swift"></i></div>
-                    Turnos
+                    Turnos      
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
                 <div class="collapse" id="collapseTurnos" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="#" >Ver Turnos</a>
-                        <a class="nav-link" href="#" >Alta Turnos</a>
+                        <a class="nav-link" href="altaTurnos.jsp" >Alta Turnos</a>
                     </nav>
                 </div>
-                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTurnos" aria-expanded="false" aria-controls="collapseLayouts">
+                
+                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseOdontologos" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fas fa-solid fa-user-doctor"></i></div>
                     Odontólogos
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -51,9 +52,10 @@
                 <div class="collapse" id="collapseOdontologos" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="#" >Ver Odontólogos</a>
-                        <a class="nav-link" href="#" >Alta Odontólogos</a>
+                        <a class="nav-link" href="altaOdontologos.jsp" >Alta Odontólogos</a>
                     </nav>
                 </div>
+                
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseHorarios" aria-expanded="false" aria-controls="collapseLayouts">
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-calendar-days"></i></div>
                     Horarios
@@ -61,8 +63,8 @@
                 </a>
                 <div class="collapse" id="collapseHorarios" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Horarios</a>
-                        <a class="nav-link" href="#" >Alta Horarios</a>
+                        <a class="nav-link" href="servletHorario" >Ver Horarios</a>
+                        <a class="nav-link" href="altaHorarios.jsp" >Alta Horarios</a>
                     </nav>
                 </div>
 

@@ -42,16 +42,16 @@ public class servletRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String correo = request.getParameter("correo");
+        //String apellido = request.getParameter("apellido");
+        //String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
         String repContrasenia = request.getParameter("repContrasenia");
         
         if(contrasenia.equals(repContrasenia)){
             claseUsuariosOdon usu = new claseUsuariosOdon();
             usu.setNombre(nombre);
-            usu.setApellido(apellido);
-            usu.setCorreo(correo);
+            //usu.setApellido(apellido);
+            //usu.setCorreo(correo);
             usu.setContrasenia(contrasenia);
             
             control.crearUsuario(usu);

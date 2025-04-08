@@ -16,14 +16,14 @@
                                 <div class="col">
                                     <input type="text" class="form-control" placeholder="Ingrese un nombre" name="nombre" required> 
                                 </div>
-                                <div class="col">
+                                <%--<div class="col">
                                     <input type="text" class="form-control" placeholder="Ingresa un apellido" name="apellido" required>
-                                </div>
+                                </div>--%>
                             </div>
                             <div class="row">
-                                <div class="col">
+                                <%--<div class="col">
                                     <input type="text" class="form-control" placeholder="Ingrese un correo" name="correo" required>
-                                </div>
+                                </div>--%>
                                 <div class="col">
                                     <input type="password" class="form-control" placeholder="Ingresa una contraseña" name="contrasenia" required>
                                 </div>

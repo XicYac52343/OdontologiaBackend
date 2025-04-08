@@ -50,15 +50,15 @@ public class servletUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String nombre = request.getParameter("nombre");
-        String apellido = request.getParameter("apellido");
-        String correo = request.getParameter("correo");
+        //String apellido = request.getParameter("apellido");
+        //String correo = request.getParameter("correo");
         String contrasenia = request.getParameter("contrasenia");
         String rol = request.getParameter("rol");
         
         claseUsuariosOdon usu = new claseUsuariosOdon();
         usu.setNombre(nombre);
-        usu.setApellido(apellido);
-        usu.setCorreo(correo);
+        //usu.setApellido(apellido);
+        //usu.setCorreo(correo);
         usu.setContrasenia(contrasenia);
         usu.setRol(rol);
         

@@ -3,9 +3,14 @@
   <persistence-unit name="persistenciaUsuarios" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>logica.claseUsuariosOdon</class>
+    <class>logica.clasePersona</class>
+    <class>logica.claseHorario</class>
+    <class>logica.claseOdontologo</class>
+    <class>logica.claseTurnos</class>
+    <class>logica.clasePacientes</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/javaweb?serverTimezone=UTC"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gym?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>

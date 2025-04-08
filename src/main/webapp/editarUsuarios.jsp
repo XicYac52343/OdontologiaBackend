@@ -36,8 +36,8 @@
                                     <td><%=usu.getId()%></td>
                             <p><input type="hidden" name="id" value="<%=usu.getId()%>"></p>
                             <td><input type="text" name="nombre" value="<%=usu.getNombre()%>"></td>
-                            <td><input type="text" name="apellido" value="<%=usu.getApellido()%>"</td>
-                            <td><input type="text" name="correo" value="<%=usu.getCorreo()%>"</td>
+                            <%--<td><input type="text" name="apellido" value="<%=usu.getApellido()%>"</td>
+                            <td><input type="text" name="correo" value="<%=usu.getCorreo()%>"</td>--%>
                             <td><input type="text" name="contrasenia" value="<%=usu.getContrasenia()%>"</td>
                             <td>Rol:<%=usu.getRol()%>
                                 <div class="form-check">

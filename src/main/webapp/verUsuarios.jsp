@@ -35,8 +35,8 @@
                             <tr>
                                 <td><%=usu.getId()%></td>
                                 <td><%=usu.getNombre()%></td>
-                                <td><%=usu.getApellido()%></td>
-                                <td><%=usu.getCorreo()%></td>
+                                <%--<td><%=usu.getApellido()%></td>
+                                <td><%=usu.getCorreo()%></td>--%>
                                 <td><%=usu.getContrasenia()%></td>
                                 <td><%=usu.getRol()%></td>      
 

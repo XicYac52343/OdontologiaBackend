@@ -59,11 +59,11 @@ public class servletLogin extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String correo = request.getParameter("correo");
+        String nombre = request.getParameter("nombre");
         String contrasenia = request.getParameter("contrasenia");
         HttpSession misession = request.getSession(true);
-        if(control.validarCredenciales(correo, contrasenia)){
-            misession.setAttribute("usuario", correo);
+        if(control.validarCredenciales(nombre, contrasenia)){
+            misession.setAttribute("usuario", nombre);
             misession.setAttribute("fallo", 0);
             response.sendRedirect("index.jsp");
         }else{
