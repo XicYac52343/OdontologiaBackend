@@ -9,6 +9,7 @@
 </head>  
 <body class="sb-nav-fixed">
     <%@include file="layout/navBar.jsp" %>
+    <%@include file="layout/validarSesion.jsp"%>
     <div id="layoutSidenav">
         <%@include file="layout/layoutSidenav_nav.jsp" %>
         <div id="layoutSidenav_content">
