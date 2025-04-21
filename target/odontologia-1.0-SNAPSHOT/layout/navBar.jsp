@@ -31,7 +31,7 @@
                     <%if(usuario !=null) {
                     %>
                 <li><hr class="dropdown-divider" /></li>
-                <li><a class="dropdown-item" href="#!">Cerrar Sesión</a></li>    
+                <li><a class="dropdown-item" href="servletLogin">Cerrar Sesión</a></li>    
                     <%
                         }
                     %>

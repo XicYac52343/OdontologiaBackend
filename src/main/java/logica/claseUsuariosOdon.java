@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -14,6 +16,8 @@ public class claseUsuariosOdon implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    
+    
     private String nombre; 
     //private String apellido;
     //private String correo;
@@ -23,7 +27,7 @@ public class claseUsuariosOdon implements Serializable {
         
     }
     
-    public claseUsuariosOdon(int id, String nombre, String contrasenia, String rol ){
+    public claseUsuariosOdon(int id, String nombre, String contrasenia, String rol){
         this.id = id;
         this.nombre = nombre;
         //this.apellido = apellido;
@@ -78,6 +82,5 @@ public class claseUsuariosOdon implements Serializable {
     public void setRol(String rol){
         this.rol = rol;
     }
-    
     
 }

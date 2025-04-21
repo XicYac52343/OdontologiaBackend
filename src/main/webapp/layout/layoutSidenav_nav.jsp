@@ -17,7 +17,7 @@
                 </a>
                 <div class="collapse" id="collapsePacientes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="layout-static.html">Ver Pacientes</a>
+                        <a class="nav-link" href="servletPaciente">Ver Pacientes</a>
                         <a class="nav-link" href="altaPacientes.jsp">Alta Pacientes</a>
                     </nav>
                 </div>
@@ -28,8 +28,8 @@
                 </a>
                 <div class="collapse" id="collapseResponsables" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Responsables</a>
-                        <a class="nav-link" href="#" >Alta Responsables</a>
+                        <a class="nav-link" href="servletResponsable" >Ver Responsables</a>
+                        <a class="nav-link" href="altaResponsables.jsp" >Alta Responsables</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseTurnos" aria-expanded="false" aria-controls="collapseLayouts">
@@ -39,7 +39,7 @@
                 </a>
                 <div class="collapse" id="collapseTurnos" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Turnos</a>
+                        <a class="nav-link" href="servletTurno" >Ver Turnos</a>
                         <a class="nav-link" href="altaTurnos.jsp" >Alta Turnos</a>
                     </nav>
                 </div>
@@ -51,7 +51,7 @@
                 </a>
                 <div class="collapse" id="collapseOdontologos" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#" >Ver Odontólogos</a>
+                        <a class="nav-link" href="servletOdontologo" >Ver Odontólogos</a>
                         <a class="nav-link" href="altaOdontologos.jsp" >Alta Odontólogos</a>
                     </nav>
                 </div>
@@ -75,8 +75,8 @@
                 </a>
                 <div class="collapse" id="collapseSecretarios" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="servletSecretarios" >Ver Secretarios</a>
-                        <a class="nav-link" href="#" >Alta Secretarios</a>
+                        <a class="nav-link" href="servletSecretaria" >Ver Secretarios</a>
+                        <a class="nav-link" href="altaSecretarias.jsp" >Alta Secretarios</a>
                     </nav>
                 </div>
                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseUsuarios" aria-expanded="false" aria-controls="collapseLayouts">
@@ -95,7 +95,10 @@
         </div>
         <div class="sb-sidenav-footer">
             <div class="small">Iniciando sesión como: </div>
-            Start Bootstrap
+            <% 
+                String nombre = (String) request.getSession().getAttribute("usuario");
+            %>
+            <%=nombre%>
         </div>
     </nav>
 </div>

@@ -3,6 +3,7 @@ package logica;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,10 @@ public class claseOdontologo extends clasePersona implements Serializable {
 
     private String especialidad;
     
-    @OneToMany (mappedBy="odontologo")
+    @OneToMany (mappedBy="odontologo", cascade = CascadeType.ALL)
     private List<claseTurnos> listaTurnos;
     
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private claseUsuariosOdon unUsuario;
     
     @OneToOne

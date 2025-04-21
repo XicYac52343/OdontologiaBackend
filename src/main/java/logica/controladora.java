@@ -1,5 +1,6 @@
 package logica;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,10 @@ public class controladora {
     public void crearOdontologo(claseOdontologo odontologo) {
         controlPersis.crearOdontologo(odontologo);
     }
+    
+    public void crearSecretaria(claseSecretaria secretaria){
+        controlPersis.crearSecretaria(secretaria);
+    }
 
     public void crearPaciente(clasePacientes paciente) {
         controlPersis.crearPaciente(paciente);
@@ -33,6 +38,10 @@ public class controladora {
     
     public void crearTurno(claseTurnos turno){
         controlPersis.crearTurno(turno);
+    }
+    
+    public void crearResponsable(claseResponsable responsable){
+        controlPersis.crearResponsable(responsable);
     }
 
     public List<claseUsuariosOdon> traerUsuario() {
@@ -50,6 +59,30 @@ public class controladora {
     public List<clasePacientes> traerPacientes() {
         return controlPersis.traerPacientes();
     }
+    
+    public List<claseSecretaria> traerSecretarias(){
+        return controlPersis.traerSecretarias();
+    }
+    
+    public claseSecretaria traerSecretaria(int id){
+        return controlPersis.traerSecretaria(id);
+    }
+    
+    public List<claseTurnos> traerTurnos(){
+        return controlPersis.traerTurnos();
+    }
+    
+    public claseTurnos traerTurno(int id){
+        return controlPersis.traerTurno(id);
+    }
+    
+    public List<claseResponsable> traerResponsables(){
+        return controlPersis.traerResponsables();
+    }
+    
+    public claseResponsable traerResponsable(int id){
+        return controlPersis.traerResponsable(id);
+    }
 
     public claseHorario traerHorario(int id) {
         return controlPersis.traerHorario(id);
@@ -63,8 +96,42 @@ public class controladora {
         return controlPersis.traerPacientes(id);
     }
 
+    
+    public List<claseTurnos> traerTurnosActuales(int usuario, LocalDate fechaActual){
+        
+        List<claseOdontologo> listaOdontologos = new ArrayList<>();
+        listaOdontologos = controlPersis.traerOdontologos();
+        
+        for(claseOdontologo odon :listaOdontologos){
+            if(odon.getUnUsuario().getId() == usuario){
+                return controlPersis.traerTurnosActuales(odon.getId(), fechaActual);
+            }  
+        }
+        return controlPersis.traerTurnosActuales(-1, fechaActual);
+    }
+    
     public void editarUsuario(claseUsuariosOdon usu) {
         controlPersis.editarUsuario(usu);
+    }
+    
+    public void editarOdontologo(claseOdontologo odon){
+        controlPersis.editarOdontologo(odon);
+    }
+    
+    public void editarResponsable(claseResponsable responsable){
+        controlPersis.editarResponsable(responsable);
+    }
+        
+    public void editarPaciente(clasePacientes paciente){
+        controlPersis.editarPaciente(paciente);
+    }
+    
+    public void editarSecretaria(claseSecretaria secretaria){
+        controlPersis.editarSecretaria(secretaria);
+    }
+    
+    public void editarTurno(claseTurnos turno){
+        controlPersis.editarTurno(turno);
     }
 
     public void eliminarUsuario(int id) {
@@ -74,16 +141,36 @@ public class controladora {
     public void eliminarHorario(int id) {
         controlPersis.eliminarHorario(id);
     }
+    
+    public void eliminarTurno(int id){
+        controlPersis.eliminarTurno(id);
+    }
+    
+    public void eliminarSecretaria(int id){
+        controlPersis.eliminarSecretaria(id);
+    }
+    
+    public void eliminarPaciente(int id){
+        controlPersis.eliminarPaciente(id);
+    }
+    
+    public void eliminarOdontologo(int id){
+        controlPersis.eliminarOdontologo(id);
+    }
+    
+    public void eliminarResponsable(int id){
+        controlPersis.eliminarResponsable(id);
+    }
 
-    public Boolean validarCredenciales(String correo, String contrasenia) {
+    public int validarCredenciales(String correo, String contrasenia) {
         List<claseUsuariosOdon> listaUsuarios = new ArrayList<>();
         listaUsuarios = controlPersis.obtenerUsuarios();
 
         for (claseUsuariosOdon usu : listaUsuarios) {
             if (correo.equals(usu.getNombre()) && contrasenia.equals(usu.getContrasenia())) {
-                return true;
+                return usu.getId();                
             }
         }
-        return false;
+        return -1;
     }
 }

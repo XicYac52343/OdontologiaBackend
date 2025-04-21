@@ -5,14 +5,16 @@
 package persistencia;
 
 import java.io.Serializable;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import logica.claseTurnos;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import logica.clasePacientes;
 import persistencia.exceptions.NonexistentEntityException;
 
@@ -29,6 +31,7 @@ public class clasePacientesJpaController implements Serializable {
     public clasePacientesJpaController() {
         emf = Persistence.createEntityManagerFactory("persistenciaUsuarios");
     }
+
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
@@ -36,11 +39,29 @@ public class clasePacientesJpaController implements Serializable {
     }
 
     public void create(clasePacientes clasePacientes) {
+        if (clasePacientes.getListaTurnos() == null) {
+            clasePacientes.setListaTurnos(new ArrayList<claseTurnos>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            List<claseTurnos> attachedListaTurnos = new ArrayList<claseTurnos>();
+            for (claseTurnos listaTurnosclaseTurnosToAttach : clasePacientes.getListaTurnos()) {
+                listaTurnosclaseTurnosToAttach = em.getReference(listaTurnosclaseTurnosToAttach.getClass(), listaTurnosclaseTurnosToAttach.getId());
+                attachedListaTurnos.add(listaTurnosclaseTurnosToAttach);
+            }
+            clasePacientes.setListaTurnos(attachedListaTurnos);
             em.persist(clasePacientes);
+            for (claseTurnos listaTurnosclaseTurnos : clasePacientes.getListaTurnos()) {
+                clasePacientes oldUnPacienteOfListaTurnosclaseTurnos = listaTurnosclaseTurnos.getUnPaciente();
+                listaTurnosclaseTurnos.setUnPaciente(clasePacientes);
+                listaTurnosclaseTurnos = em.merge(listaTurnosclaseTurnos);
+                if (oldUnPacienteOfListaTurnosclaseTurnos != null) {
+                    oldUnPacienteOfListaTurnosclaseTurnos.getListaTurnos().remove(listaTurnosclaseTurnos);
+                    oldUnPacienteOfListaTurnosclaseTurnos = em.merge(oldUnPacienteOfListaTurnosclaseTurnos);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -54,7 +75,34 @@ public class clasePacientesJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            clasePacientes persistentclasePacientes = em.find(clasePacientes.class, clasePacientes.getId());
+            List<claseTurnos> listaTurnosOld = persistentclasePacientes.getListaTurnos();
+            List<claseTurnos> listaTurnosNew = clasePacientes.getListaTurnos();
+            List<claseTurnos> attachedListaTurnosNew = new ArrayList<claseTurnos>();
+            for (claseTurnos listaTurnosNewclaseTurnosToAttach : listaTurnosNew) {
+                listaTurnosNewclaseTurnosToAttach = em.getReference(listaTurnosNewclaseTurnosToAttach.getClass(), listaTurnosNewclaseTurnosToAttach.getId());
+                attachedListaTurnosNew.add(listaTurnosNewclaseTurnosToAttach);
+            }
+            listaTurnosNew = attachedListaTurnosNew;
+            clasePacientes.setListaTurnos(listaTurnosNew);
             clasePacientes = em.merge(clasePacientes);
+            for (claseTurnos listaTurnosOldclaseTurnos : listaTurnosOld) {
+                if (!listaTurnosNew.contains(listaTurnosOldclaseTurnos)) {
+                    listaTurnosOldclaseTurnos.setUnPaciente(null);
+                    listaTurnosOldclaseTurnos = em.merge(listaTurnosOldclaseTurnos);
+                }
+            }
+            for (claseTurnos listaTurnosNewclaseTurnos : listaTurnosNew) {
+                if (!listaTurnosOld.contains(listaTurnosNewclaseTurnos)) {
+                    clasePacientes oldUnPacienteOfListaTurnosNewclaseTurnos = listaTurnosNewclaseTurnos.getUnPaciente();
+                    listaTurnosNewclaseTurnos.setUnPaciente(clasePacientes);
+                    listaTurnosNewclaseTurnos = em.merge(listaTurnosNewclaseTurnos);
+                    if (oldUnPacienteOfListaTurnosNewclaseTurnos != null && !oldUnPacienteOfListaTurnosNewclaseTurnos.equals(clasePacientes)) {
+                        oldUnPacienteOfListaTurnosNewclaseTurnos.getListaTurnos().remove(listaTurnosNewclaseTurnos);
+                        oldUnPacienteOfListaTurnosNewclaseTurnos = em.merge(oldUnPacienteOfListaTurnosNewclaseTurnos);
+                    }
+                }
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -83,6 +131,11 @@ public class clasePacientesJpaController implements Serializable {
                 clasePacientes.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The clasePacientes with id " + id + " no longer exists.", enfe);
+            }
+            List<claseTurnos> listaTurnos = clasePacientes.getListaTurnos();
+            for (claseTurnos listaTurnosclaseTurnos : listaTurnos) {
+                listaTurnosclaseTurnos.setUnPaciente(null);
+                listaTurnosclaseTurnos = em.merge(listaTurnosclaseTurnos);
             }
             em.remove(clasePacientes);
             em.getTransaction().commit();

@@ -29,7 +29,6 @@ public class claseOdontologoJpaController implements Serializable {
     public claseOdontologoJpaController() {
         emf = Persistence.createEntityManagerFactory("persistenciaUsuarios");
     }
-    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

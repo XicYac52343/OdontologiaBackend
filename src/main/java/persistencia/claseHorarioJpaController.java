@@ -25,14 +25,10 @@ public class claseHorarioJpaController implements Serializable {
     public claseHorarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    
-    public claseHorarioJpaController(){
+    public claseHorarioJpaController() {
         emf = Persistence.createEntityManagerFactory("persistenciaUsuarios");
     }
-    
     private EntityManagerFactory emf = null;
-    
-    
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();

@@ -29,8 +29,8 @@
                                     <div class="card-body">
                                         <form action="servletLogin" method="POST">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="correo"/>
-                                                <label for="inputEmail">Correo</label>
+                                                <input class="form-control" id="inputNombre" type="text" placeholder="admin" name="nombre"/>
+                                                <label for="inputName">Nombre</label>
                                             </div>
                                             <div class="form-floating mb-3">
                                                 <input class="form-control" id="inputPassword" type="password" placeholder="Password" name="contrasenia" />

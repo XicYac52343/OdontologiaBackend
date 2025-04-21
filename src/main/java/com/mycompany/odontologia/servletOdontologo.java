@@ -48,6 +48,14 @@ public class servletOdontologo extends HttpServlet {
         miSession.setAttribute("listaHorarios", listaHorarios);
     
         response.sendRedirect("altaOdontologos.jsp");*/
+
+        List<claseOdontologo> listaOdontologos = new ArrayList<>();
+        listaOdontologos = control.traerOdontologos();
+
+        HttpSession misession = request.getSession();
+        misession.setAttribute("listaOdontologos", listaOdontologos);
+
+        response.sendRedirect("verOdontologos.jsp");
     }
 
     @Override
@@ -68,7 +76,6 @@ public class servletOdontologo extends HttpServlet {
         usu.setContrasenia(contrasenia);
         usu.setRol("odontologo");
 
-        control.crearUsuario(usu);
 
         claseOdontologo odonto = new claseOdontologo();
         odonto.setDni(dni);
@@ -79,11 +86,11 @@ public class servletOdontologo extends HttpServlet {
         odonto.setFecha_nac(fecha_nac);
         odonto.setEspecialidad(especialidad);
         odonto.setUnUsuario(usu);
-        
+
         odonto.setUnHorario(control.traerHorario(unHorario));
 
         control.crearOdontologo(odonto);
-        
+
         response.sendRedirect("index.jsp");
     }
 

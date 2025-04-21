@@ -26,9 +26,10 @@ public class claseUsuariosOdonJpaController implements Serializable {
         this.emf = emf;
     }
     
-    public claseUsuariosOdonJpaController(){
+    public claseUsuariosOdonJpaController() {
         emf = Persistence.createEntityManagerFactory("persistenciaUsuarios");
     }
+    
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {

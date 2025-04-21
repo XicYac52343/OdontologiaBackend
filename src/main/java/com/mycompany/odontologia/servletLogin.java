@@ -2,12 +2,17 @@ package com.mycompany.odontologia;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import logica.claseOdontologo;
+import logica.claseTurnos;
 import logica.controladora;
 import logica.claseUsuariosOdon;
 
@@ -45,7 +50,9 @@ public class servletLogin extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getSession().removeAttribute("usuario");
+        request.getSession().invalidate();
+        response.sendRedirect(request.getContextPath()+"/login.jsp");
     }
 
     /**
@@ -62,9 +69,19 @@ public class servletLogin extends HttpServlet {
         String nombre = request.getParameter("nombre");
         String contrasenia = request.getParameter("contrasenia");
         HttpSession misession = request.getSession(true);
-        if(control.validarCredenciales(nombre, contrasenia)){
+        int usuario = control.validarCredenciales(nombre, contrasenia);
+        
+        if(usuario != -1){
             misession.setAttribute("usuario", nombre);
             misession.setAttribute("fallo", 0);
+            
+            List<claseTurnos> listaTurnosActuales = new ArrayList<>();
+            LocalDate fechaActual = LocalDate.now();
+            
+            listaTurnosActuales = control.traerTurnosActuales(usuario, fechaActual);
+            misession.setAttribute("listaTurnosActuales", listaTurnosActuales);
+            misession.setAttribute("usuarioLoggeado", usuario);
+            
             response.sendRedirect("index.jsp");
         }else{
             misession.setAttribute("fallo", 1);

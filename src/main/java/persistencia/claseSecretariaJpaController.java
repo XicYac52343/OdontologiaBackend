@@ -13,20 +13,20 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import logica.claseUsuariosOdon;
+import logica.claseSecretaria;
 import persistencia.exceptions.NonexistentEntityException;
 
 /**
  *
  * @author XicYac
  */
-public class claseUsuariosOdonJpaController1 implements Serializable {
+public class claseSecretariaJpaController implements Serializable {
 
-    public claseUsuariosOdonJpaController1(EntityManagerFactory emf) {
+    public claseSecretariaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
 
-    public claseUsuariosOdonJpaController1() {
+    public claseSecretariaJpaController() {
         emf = Persistence.createEntityManagerFactory("persistenciaUsuarios");
     }
     private EntityManagerFactory emf = null;
@@ -35,12 +35,12 @@ public class claseUsuariosOdonJpaController1 implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(claseUsuariosOdon claseUsuariosOdon) {
+    public void create(claseSecretaria claseSecretaria) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            em.persist(claseUsuariosOdon);
+            em.persist(claseSecretaria);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -49,19 +49,19 @@ public class claseUsuariosOdonJpaController1 implements Serializable {
         }
     }
 
-    public void edit(claseUsuariosOdon claseUsuariosOdon) throws NonexistentEntityException, Exception {
+    public void edit(claseSecretaria claseSecretaria) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            claseUsuariosOdon = em.merge(claseUsuariosOdon);
+            claseSecretaria = em.merge(claseSecretaria);
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                int id = claseUsuariosOdon.getId();
-                if (findclaseUsuariosOdon(id) == null) {
-                    throw new NonexistentEntityException("The claseUsuariosOdon with id " + id + " no longer exists.");
+                int id = claseSecretaria.getId();
+                if (findclaseSecretaria(id) == null) {
+                    throw new NonexistentEntityException("The claseSecretaria with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -77,14 +77,14 @@ public class claseUsuariosOdonJpaController1 implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            claseUsuariosOdon claseUsuariosOdon;
+            claseSecretaria claseSecretaria;
             try {
-                claseUsuariosOdon = em.getReference(claseUsuariosOdon.class, id);
-                claseUsuariosOdon.getId();
+                claseSecretaria = em.getReference(claseSecretaria.class, id);
+                claseSecretaria.getId();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The claseUsuariosOdon with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The claseSecretaria with id " + id + " no longer exists.", enfe);
             }
-            em.remove(claseUsuariosOdon);
+            em.remove(claseSecretaria);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -93,19 +93,19 @@ public class claseUsuariosOdonJpaController1 implements Serializable {
         }
     }
 
-    public List<claseUsuariosOdon> findclaseUsuariosOdonEntities() {
-        return findclaseUsuariosOdonEntities(true, -1, -1);
+    public List<claseSecretaria> findclaseSecretariaEntities() {
+        return findclaseSecretariaEntities(true, -1, -1);
     }
 
-    public List<claseUsuariosOdon> findclaseUsuariosOdonEntities(int maxResults, int firstResult) {
-        return findclaseUsuariosOdonEntities(false, maxResults, firstResult);
+    public List<claseSecretaria> findclaseSecretariaEntities(int maxResults, int firstResult) {
+        return findclaseSecretariaEntities(false, maxResults, firstResult);
     }
 
-    private List<claseUsuariosOdon> findclaseUsuariosOdonEntities(boolean all, int maxResults, int firstResult) {
+    private List<claseSecretaria> findclaseSecretariaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(claseUsuariosOdon.class));
+            cq.select(cq.from(claseSecretaria.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -117,20 +117,20 @@ public class claseUsuariosOdonJpaController1 implements Serializable {
         }
     }
 
-    public claseUsuariosOdon findclaseUsuariosOdon(int id) {
+    public claseSecretaria findclaseSecretaria(int id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(claseUsuariosOdon.class, id);
+            return em.find(claseSecretaria.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getclaseUsuariosOdonCount() {
+    public int getclaseSecretariaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<claseUsuariosOdon> rt = cq.from(claseUsuariosOdon.class);
+            Root<claseSecretaria> rt = cq.from(claseSecretaria.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();
